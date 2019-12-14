@@ -1,0 +1,137 @@
+html {
+    font-family: "sans-serif", "Arial";
+    font-size: 16px;
+}
+a {
+    padding:0 5% 0 0;
+    text-decoration: none;
+}
+header {
+    position: relative;
+    left: 20%;
+    width: 500px;
+    top: 5%;
+}
+
+article { margin: 0; }
+#sidebar, #content { position: absolute; top: 20%; }
+#sidebar, #content { overflow: auto; padding: 10px; }
+
+#sidebar {
+    width: 200px;
+    border-right: 1px solid #231F20;
+    bottom: 0; /* Расстояние снизу  */
+}
+#content {
+    left: 170px; /* Расстояние от левого края */
+    bottom: 0; right: 0;
+}
+input:focus {
+    background: #eaeaea;
+}
+#addTour {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #ffffff;
+    padding: 16px 26px;
+    background: -moz-linear-gradient(
+            top,
+            #42aaff 0%,
+            #003366);
+    background: -webkit-gradient(
+            linear, left top, left bottom,
+            from(#42aaff),
+            to(#003366));
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid #003366;
+    -moz-box-shadow:
+            0 1px 3px rgba(000,000,000,0.5),
+            inset 0 0 1px rgba(255,255,255,0.5);
+    -webkit-box-shadow:
+            0 1px 3px rgba(000,000,000,0.5),
+            inset 0 0 1px rgba(255,255,255,0.5);
+    box-shadow:
+            0 1px 3px rgba(000,000,000,0.5),
+            inset 0 0 1px rgba(255,255,255,0.5);
+    text-shadow:
+            0 -1px 0 rgba(000,000,000,0.7),
+            0 1px 0 rgba(255,255,255,0.3);
+    display: inline-block;
+    text-decoration: none;
+}
+#addTour:hover {
+    background: -moz-linear-gradient(
+            top,
+            #42aaff 0%,
+            #0d5aa7);
+    background: -webkit-gradient(
+            linear, left top, left bottom,
+            from(#42aaff),
+            to(#0d5aa7));
+}
+#addTour:active {
+    background: -moz-linear-gradient(
+            top,
+            #003366 0%,
+            #42aaff);
+    background: -webkit-gradient(
+            linear, left top, left bottom,
+            from(#003366),
+            to(#42aaff));
+}
+
+.mainHref {
+    background: #6DB3F2 url("/resources/images/tourism.png") no-repeat;
+    width: 500px;
+    height: 90px;
+    left: 30%;
+    position: relative;
+    background-size: auto 90px;
+    color: blue;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 0 10px 10px #6DB3F2;
+}
+.mainText {
+    padding-top: 30px;
+}
+
+.log {
+    position: absolute;
+    top: 70px;
+    right: 100px;
+    color: black;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    text-align: left;
+    width: 99%;
+    height: 2.5rem;            /* Footer height */
+}
+
+.shell {
+    position: relative;
+    line-height: 1; }
+.shell span {
+    position: absolute;
+    left: 3px;
+    top: 1px;
+    pointer-events: none;
+    z-index: -1; }
+.shell span i {
+    font-style: normal;
+    /* any of these 3 will work */
+    opacity: 0;
+    visibility: hidden; }
+
+input.masked,
+.shell span {
+    font-size: 16px;
+    font-family: monospace;
+    padding-right: 10px;
+    background-color: transparent;
+    text-transform: uppercase; }
