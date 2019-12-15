@@ -1,6 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file='../parts/header.jsp'%>
+<%@include file='../../parts/header.jsp'%>
 
 <div id="content">
     <div style="position: relative; left: -200px" align="center">
@@ -14,7 +14,7 @@
                     <td colspan="2">Пароль : </td><td><input type="password" name="password" required></td>
                 </tr><input type="hidden" name="_csrf" value="${_csrf.token}" />
                 <tr><td></td><td></td><td><input type="submit" value="Войти"/></td></tr>
-                <tr><td></td><td></td><td id="errorDiv"></td></tr>
+                <%--<tr><td></td><td></td><td id="errorDiv"></td></tr>--%>
             </table>
         </form>
         <a href="${pageContext.request.contextPath}/registration">Регистрация</a>
@@ -23,7 +23,8 @@
 <script>
     var sPageURL = window.location.search.substring(1);
     if(sPageURL == "error") {
-        document.getElementById("errorDiv").innerHTML = "Ошибка входа! Пользователь не найден.";
+        // document.getElementById("errorDiv").innerHTML = "Ошибка входа! Пользователь не найден.";
+        alert("Пользователь не найден");
     }
 </script>
-<%@include file='../parts/footer.jsp'%>
+<%@include file='../../parts/footer.jsp'%>

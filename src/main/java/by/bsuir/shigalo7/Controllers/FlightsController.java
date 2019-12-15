@@ -1,9 +1,6 @@
+/*
 package by.bsuir.shigalo7.Controllers;
 
-import by.bsuir.shigalo7.Entities.Flight;
-import by.bsuir.shigalo7.Entities.Tour;
-import by.bsuir.shigalo7.Services.FlightService;
-import by.bsuir.shigalo7.Services.TourService;
 import by.bsuir.shigalo7.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -68,3 +65,4 @@ public class FlightsController {
         return "redirect:/flights";
     }
 }
+*/

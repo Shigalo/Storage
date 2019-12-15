@@ -1,7 +1,6 @@
+/*
 package by.bsuir.shigalo7.Controllers;
 
-import by.bsuir.shigalo7.Services.InfoService;
-import by.bsuir.shigalo7.Services.TourService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,3 +43,4 @@ public class ImageController {
         IOUtils.copy(inputStream, response.getOutputStream());
     }
 }
+*/

@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file='../parts/header.jsp'%>
+<%@include file='../../parts/header.jsp'%>
 
 <div id="content">
     <table border="1">
@@ -24,4 +24,4 @@
             </tr>
         </c:forEach>
     </table>
-<%@include file='../parts/footer.jsp'%>
+<%@include file='../../parts/footer.jsp'%>

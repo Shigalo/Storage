@@ -16,6 +16,7 @@ public class User {
     private String surname;
     private String phone;
     private String password;
+    private String mail;
     private boolean active;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)

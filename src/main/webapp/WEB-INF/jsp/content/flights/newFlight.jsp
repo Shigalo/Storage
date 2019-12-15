@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file='../parts/header.jsp'%>
+<%@include file='../../parts/header.jsp'%>
 
 <div id="content">
 
@@ -15,4 +15,4 @@
         <div style="position:relative; padding: 5px"><input type="submit" value="Добавить" style="position: relative; left: 100px; top: 20px;"/></div>
     </form>
 </div>
-<%@include file='../parts/footer.jsp'%>
+<%@include file='../../parts/footer.jsp'%>

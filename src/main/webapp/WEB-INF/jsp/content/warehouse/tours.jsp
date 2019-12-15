@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file='../parts/header.jsp'%>
+<%@include file='../../parts/header.jsp'%>
 
 <div id="content">
     <c:if test="${empty tourList}"><h3 style="left: 23%; position: relative">Записи предоставляемых услуг не найдены</h3></c:if>
@@ -36,5 +36,5 @@
         </table>
     </c:if>
 </div>
-<%@include file='../parts/footer.jsp'%>
+<%@include file='../../parts/footer.jsp'%>
 

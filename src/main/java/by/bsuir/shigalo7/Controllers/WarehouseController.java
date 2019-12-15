@@ -1,76 +1,82 @@
 package by.bsuir.shigalo7.Controllers;
 
-import by.bsuir.shigalo7.Entities.Info;
-import by.bsuir.shigalo7.Entities.Tour;
-import by.bsuir.shigalo7.Services.FlightService;
-import by.bsuir.shigalo7.Services.InfoService;
-import by.bsuir.shigalo7.Services.TourService;
+import by.bsuir.shigalo7.Entities.Product;
+import by.bsuir.shigalo7.Entities.Stock;
+import by.bsuir.shigalo7.Entities.Warehouse;
+import by.bsuir.shigalo7.Services.StockService;
 import by.bsuir.shigalo7.Services.UserService;
+import by.bsuir.shigalo7.Services.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.sql.rowset.serial.SerialBlob;
-import java.io.IOException;
-import java.sql.Blob;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Controller
-@RequestMapping("/tours")
-public class ToursController {
+@RequestMapping("/warehouse")
+public class WarehouseController {
 
     @Autowired
     UserService userService;
     @Autowired
-    TourService tourService;
+    WarehouseService warehouseService;
     @Autowired
-    InfoService infoService;
-    @Autowired
-    FlightService flightService;
-
-    @GetMapping("")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public String getToursList(Model model) {
-        model.addAttribute("isLogin", userService.isLogin());
-        model.addAttribute("isAdmin", userService.isAdmin());
-        model.addAttribute("tourList", tourService.findAll());
-        return "tours/tours";
-    }
-
-    @GetMapping("/add")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public String addForm(Model model) {
-        model.addAttribute("isLogin", userService.isLogin());
-        model.addAttribute("isAdmin", userService.isAdmin());
-        return "tours/newTour";
-    }
+    StockService stockService;
 
     @PostMapping("/add")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public String create(@RequestParam String target,
-                         @RequestParam String name,
-                         @RequestParam Integer places,
-                         @RequestParam String date,
-                         @RequestParam String type,
-                         @RequestParam Double cost,
-                         @RequestParam Integer length,
-                         Model model) throws ParseException {
+//    @PreAuthorize("hasAuthority('ADMIN')")
+    public String create(@RequestParam String address, Model model) {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
-        Tour tour = new Tour(target, name, places, false, length, type, cost,
-                new Timestamp(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(date).getTime()));
-        tourService.addTour(tour);
-        return "redirect:/tours/tourInfo/" + tour.getId();
+
+        Warehouse warehouse = warehouseService.create(address);
+        return "redirect:/warehouse/warehouseInfo/" + warehouse.getId();
     }
 
-    @GetMapping("/tourInfo/{id}")
+    @GetMapping("/warehouseInfo/{id}")
+//    @PreAuthorize("hasAuthority('ADMIN')")
+    public String getInfo(Model model, @PathVariable Integer id) {
+        model.addAttribute("isLogin", userService.isLogin());
+        model.addAttribute("isAdmin", userService.isAdmin());
+
+        Warehouse warehouse = warehouseService.findById(id);
+        List<Stock> stockList = stockService.findByWarehouse(warehouse);
+        List<Product> productList = stockService.findForWarehouse(warehouse);
+        model.addAttribute("warehouse", warehouse);
+        model.addAttribute("stockList", stockList);
+        model.addAttribute("productList", productList);
+
+        return "warehouse/warehouseInfo";
+    }
+
+    @PostMapping("/addProduct/{id}")
+//    @PreAuthorize("hasAuthority('ADMIN')")
+    public String addProduct(Model model,
+                             @RequestParam String productData,
+                             @RequestParam Integer level,
+                             @PathVariable Integer id) {
+        model.addAttribute("isLogin", userService.isLogin());
+        model.addAttribute("isAdmin", userService.isAdmin());
+
+        Warehouse warehouse = warehouseService.findById(id);
+        stockService.addProductToWarehouse(productData, warehouse, level);
+
+
+        return "redirect:/warehouse/warehouseInfo/"+id;
+    }
+
+    @GetMapping("/remove/{warehouseId}")
+//    @PreAuthorize("hasAuthority('ADMIN')")
+    public String remove(Model model, @PathVariable Integer warehouseId, @RequestParam Integer id) {
+        model.addAttribute("isLogin", userService.isLogin());
+        model.addAttribute("isAdmin", userService.isAdmin());
+        stockService.delete(id);
+        return "redirect:/warehouse/warehouseInfo/"+warehouseId;
+    }
+
+    /*@GetMapping("/tourInfo/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String addInfo(Model model, @PathVariable String id) {
         model.addAttribute("isLogin", userService.isLogin());
@@ -142,5 +148,5 @@ public class ToursController {
         model.addAttribute("isAdmin", userService.isAdmin());
         tourService.removeById(id);
         return "redirect:/tours";
-    }
+    }*/
 }

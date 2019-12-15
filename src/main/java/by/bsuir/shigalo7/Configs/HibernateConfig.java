@@ -13,7 +13,7 @@ public class HibernateConfig {
     public DataSource datasource() {
         return DataSourceBuilder.create()
                 .driverClassName("com.mysql.jdbc.Driver")
-                .url("jdbc:mysql://localhost:3306/touristTrips?useSSL=false")
+                .url("jdbc:mysql://localhost:3306/storage?useSSL=false")
                 .username("root")
                 .password("root")
                 .build();

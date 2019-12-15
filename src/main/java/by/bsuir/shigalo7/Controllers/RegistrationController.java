@@ -1,5 +1,6 @@
 package by.bsuir.shigalo7.Controllers;
 
+import by.bsuir.shigalo7.Entities.Massage;
 import by.bsuir.shigalo7.Entities.Role;
 import by.bsuir.shigalo7.Entities.User;
 import by.bsuir.shigalo7.Repositories.UserRepository;
@@ -28,6 +29,7 @@ public class RegistrationController {
     public String setForm(Model  model) {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
+        model.addAttribute("massage", Massage.getInstance().getStr());
         return "accountWork/registration";
     }
 
@@ -37,21 +39,25 @@ public class RegistrationController {
                           @RequestParam String phone,
                           @RequestParam String password,
                           @RequestParam String passwordConfirm,
+                          @RequestParam String mail,
                           Model model) {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
+//        model.addAttribute("massage", Massage.getInstance().getStr());
 
         if(!password.equals(passwordConfirm)) {
-            model.addAttribute("massage", "Пароли не совпадают!");
+            model.addAttribute("error", "Пароли не совпадают!");
             model.addAttribute("username", username);
             model.addAttribute("surname", surname);
             model.addAttribute("phone", phone);
             model.addAttribute("password", password);
+            model.addAttribute("mail", mail);
             return "accountWork/registration";
         }
         User user = new User(username, password, true, surname, phone);
         user.setRoles(Collections.singleton(Role.USER));
         userRepository.save(user);
+        Massage.getInstance().setStr("new");
         return "redirect:/login";
     }
 }

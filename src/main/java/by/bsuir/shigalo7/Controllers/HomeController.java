@@ -1,42 +1,37 @@
 package by.bsuir.shigalo7.Controllers;
 
-import by.bsuir.shigalo7.Services.FlightService;
-import by.bsuir.shigalo7.Services.RequestService;
-import by.bsuir.shigalo7.Services.TourService;
+import by.bsuir.shigalo7.Entities.Massage;
+import by.bsuir.shigalo7.Services.EmailSendingService;
 import by.bsuir.shigalo7.Services.UserService;
+import by.bsuir.shigalo7.Services.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
     @Autowired
     UserService userService;
     @Autowired
-    TourService tourService;
-    @Autowired
-    RequestService requestService;
-    @Autowired
-    FlightService flightService;
-
+    WarehouseService warehouseService;
+//    @Autowired
+//    EmailSendingService sendingService;
 
     @GetMapping("/")
     public String home(Model model) {
-
-        model.addAttribute("tourList", tourService.findAccess());
-        model.addAttribute("targetSet", tourService.targetSet());
-        model.addAttribute("lengthSet", tourService.lengthSet());
-        model.addAttribute("typeSet", tourService.typeSet());
-
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
+        model.addAttribute("warehouses", warehouseService.findAll());
         return "homepage";
     }
 
-    @RequestMapping("/403")
-    public String accessDenied() {
-        return "error";
+    @GetMapping("/test")
+    public String test(Model model) throws Exception {
+        model.addAttribute("isLogin", userService.isLogin());
+        model.addAttribute("isAdmin", userService.isAdmin());
+//        sendingService.sendMessage();
+
+        return "redirect:/";
     }
 }

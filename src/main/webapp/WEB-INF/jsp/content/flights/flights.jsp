@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file='../parts/header.jsp'%>
+<%@include file='../../parts/header.jsp'%>
 
 <div id="content">
     <img style="left: 31%; position: relative; width: 300px; height: auto" src="<c:url value="/resources/images/plane.png"/>" width="120" height="90">
@@ -31,5 +31,5 @@
         </table>
     </c:if>
 </div>
-<%@include file='../parts/footer.jsp'%>
+<%@include file='../../parts/footer.jsp'%>
 

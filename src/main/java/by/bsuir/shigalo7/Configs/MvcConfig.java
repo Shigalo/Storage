@@ -17,6 +17,7 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("homepage");
+        registry.addViewController("/test").setViewName("homepage");
         registry.addViewController("/login").setViewName("accountWork/login");
         registry.addViewController("/registration").setViewName("accountWork/registration");
         registry.addViewController("/tours").setViewName("tours");
@@ -34,7 +35,7 @@ public class MvcConfig implements WebMvcConfigurer {
     @Bean
     public InternalResourceViewResolver jspViewResolver() {
         InternalResourceViewResolver bean = new InternalResourceViewResolver();
-        bean.setPrefix("/WEB-INF/jsp/");
+        bean.setPrefix("/WEB-INF/jsp/content/");
         bean.setSuffix(".jsp");
         return bean;
     }

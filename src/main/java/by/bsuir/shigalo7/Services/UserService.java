@@ -28,10 +28,7 @@ public class UserService {
                             .getAuthentication().getPrincipal();
 
             return findByName(authUser.getUsername());
-        }catch (Exception e){
-//            e.printStackTrace();
-            return null;
-        }
+        }catch (Exception e){ return null; }
     }
 
     public boolean isAdmin() {

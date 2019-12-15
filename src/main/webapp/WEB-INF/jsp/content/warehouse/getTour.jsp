@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file='../parts/header.jsp'%>
+<%@include file='../../parts/header.jsp'%>
 <div id="content">
     <div>
         <form style="position: relative; left: 30%;"><a id="addTour" href="<c:url value='/requests/addRequest/${tour.id}'/>">Заказать</a></form>
@@ -18,4 +18,4 @@
     </table><br/>
     <div><form style="position: relative; left: 30%;"><a id="addTour" href="<c:url value='/requests/addRequest/${tour.id}'/>">Заказать</a></form></div>
 </div>
-<%@include file='../parts/footer.jsp'%>
+<%@include file='../../parts/footer.jsp'%>
