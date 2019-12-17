@@ -8,16 +8,22 @@
         <input type="submit" value="Сохранить"><br>
     </form>
     <br/>
-    <form action="/warehouse/addProduct/${warehouse.id}" method="post">
-        <label>Продукт<select name="productData">
-            <c:forEach items="${productList}" var="product">
-                <option>${product.id}<br/>${product.name}<br/>${product.type}<br/></option>
-            </c:forEach>
-        </select></label><br/>
-        <label>Точка заказа<input type="number" step="1" min="0" name="level" required></label>
-        <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <input type="submit" value="Добавить продукт на склад"><br>
-    </form>
+    <label>Складская продукция
+        <c:if test="${productList.size() == 0}">
+            <br/>На складе все виды продукции<br/>
+        </c:if>
+        <c:if test="${productList.size() != 0}">
+        <form action="/warehouse/addProduct/${warehouse.id}" method="post">
+            <select name="productData">
+                <c:forEach items="${productList}" var="product">
+                    <option>${product.id}<br/>${product.name}<br/>${product.type}<br/></option>
+                </c:forEach>
+            </select><br/>
+            <label>Точка заказа<input type="number" step="1" min="0" name="level" required></label>
+            <input type="hidden" name="_csrf" value="${_csrf.token}" />
+            <input type="submit" value="Добавить продукт на склад"><br>
+            </c:if>
+        </form></label>
     <br/>
     <table id="stocksTable" border="1">
         <tr>

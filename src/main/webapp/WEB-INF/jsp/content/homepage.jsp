@@ -6,15 +6,15 @@
             <p>${warehouse.address}</p>
         </div></a>
     </c:forEach>
-    <%--<c:if test="${isAdmin}">--%>
+    <c:if test="${isAdmin}">
     <div class="warehouse" id="addWarehouse" onclick="add()">
         <h3>Добавить</h3>
     </div>
-    <%--</c:if>--%>
+    </c:if>
 </div>
 <script>
     function add() {
-        var box = document.getElementById("addWarehouse");
+        let box = document.getElementById("addWarehouse");
         box.setAttribute("onclick", "");
         box.innerHTML = "<form action=\"${pageContext.request.contextPath}/warehouse/add\" method=\"post\">\n" +
             "<input type=\"text\" name=\"address\" placeholder=\"Адресс склада\"/>\n" +
