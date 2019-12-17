@@ -1,10 +1,7 @@
 package by.bsuir.shigalo7.Services;
 
 import by.bsuir.shigalo7.Entities.Product;
-import by.bsuir.shigalo7.Entities.Stock;
-import by.bsuir.shigalo7.Entities.Warehouse;
 import by.bsuir.shigalo7.Repositories.ProductRepository;
-import by.bsuir.shigalo7.Repositories.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +22,20 @@ public class ProductService {
     public Product findById(String productId) {
         Integer id = Integer.valueOf(productId);
         return productRepository.findById(id);
+    }
+
+    public void deleteById(Integer id) {
+        productRepository.deleteById(id);
+    }
+
+    public void save(String name, String type) {
+        Product product = new Product(name, type);
+        productRepository.save(product);
+    }
+
+    public void save(Product product, String name, String type) {
+        product.setName(name);
+        product.setType(type);
+        productRepository.save(product);
     }
 }

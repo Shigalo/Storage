@@ -2,14 +2,14 @@
 <%@include file='../parts/header.jsp'%>
 <div id="content">
     <c:forEach items="${warehouses}" var="warehouse">
-        <a href="/warehouse/warehouseInfo/${warehouse.id}"><div class="warehouse">
+        <a href="/warehouse/info/${warehouse.id}"><div class="warehouse">
             <p>${warehouse.address}</p>
         </div></a>
     </c:forEach>
     <c:if test="${isAdmin}">
-    <div class="warehouse" id="addWarehouse" onclick="add()">
-        <h3>Добавить</h3>
-    </div>
+        <div class="warehouse" id="addWarehouse" onclick="add()">
+            <h3>Добавить</h3>
+        </div>
     </c:if>
 </div>
 <script>

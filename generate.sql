@@ -16,7 +16,7 @@ CREATE TABLE `storage`.`user` (
   mail varchar(45) NULL,
   PRIMARY KEY (`id`));
 
-INSERT INTO `storage`.`user` (`id`, `name`, `password`, `active`) VALUES ('-1', 'admin', 'admin', '1');
+INSERT INTO `storage`.`user` (`id`, `name`, `password`, `active`, `mail`) VALUES ('-1', 'admin', 'admin', '1', 'sashshig99@gmail.com');
 INSERT INTO `storage`.`user_role` (`user_id`, `roles`) VALUES ('-1', 'ADMIN');
 
 CREATE TABLE `storage`.`product`(
@@ -42,3 +42,10 @@ CREATE TABLE `storage`.`order`(
     stock_id int,
     quantity int,
     CONSTRAINT order_stock FOREIGN KEY (stock_id) REFERENCES stock (id) ON DELETE CASCADE ON UPDATE CASCADE);
+
+CREATE TABLE `storage`.`subscribe`(
+    id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    user_id int NOT NULL,
+    warehouse_id int NOT NULL,
+    CONSTRAINT subscribe_user FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT subscribe_warehouse FOREIGN KEY (warehouse_id) REFERENCES warehouse (id) ON DELETE CASCADE ON UPDATE CASCADE);

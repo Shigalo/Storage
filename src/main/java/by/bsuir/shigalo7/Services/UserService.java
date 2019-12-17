@@ -40,4 +40,8 @@ public class UserService {
     public boolean isLogin() {
         return getCurrentUser() != null;
     }
+
+    public void userRemove() {
+        userRepository.delete(getCurrentUser());
+    }
 }

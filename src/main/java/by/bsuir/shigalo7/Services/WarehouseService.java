@@ -30,4 +30,9 @@ public class WarehouseService {
         Warehouse warehouse = findById(warehouseId);
 
     }
+
+    public void delete(Integer id) {
+        Warehouse warehouse = warehouseRepository.findById(id);
+        warehouseRepository.delete(warehouse);
+    }
 }

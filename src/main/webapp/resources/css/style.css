@@ -38,7 +38,7 @@ input:focus {
 }
 
 .mainHref {
-    background: #6DB3F2 url("/resources/images/tourism.png") no-repeat;
+    background: #6DB3F2 url("/resources/images/main.png") no-repeat;
     width: 500px;
     height: 90px;
     left: 32%;

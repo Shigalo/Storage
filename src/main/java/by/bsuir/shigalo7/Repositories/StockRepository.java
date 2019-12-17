@@ -1,5 +1,6 @@
 package by.bsuir.shigalo7.Repositories;
 
+import by.bsuir.shigalo7.Entities.Product;
 import by.bsuir.shigalo7.Entities.Stock;
 import by.bsuir.shigalo7.Entities.Warehouse;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,4 +18,8 @@ public interface StockRepository extends JpaRepository<Stock, Long> {
 
     @Transactional
     void deleteById(Integer id);
+
+    List<Stock> findByProduct(Product product);
+
+    public Stock findByWarehouseAndProduct(Warehouse warehouse, Product product);
 }
