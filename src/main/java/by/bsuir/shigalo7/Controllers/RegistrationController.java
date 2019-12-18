@@ -43,7 +43,6 @@ public class RegistrationController {
                           Model model) {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
-//        model.addAttribute("massage", Massage.getInstance().getStr());
 
         if(!password.equals(passwordConfirm)) {
             model.addAttribute("error", "Пароли не совпадают!");
@@ -54,7 +53,7 @@ public class RegistrationController {
             model.addAttribute("mail", mail);
             return "accountWork/registration";
         }
-        User user = new User(username, password, true, surname, phone);
+        User user = new User(username, password, true, surname, phone, mail);
         user.setRoles(Collections.singleton(Role.USER));
         userRepository.save(user);
         Massage.getInstance().setStr("new");

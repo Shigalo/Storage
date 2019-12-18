@@ -16,7 +16,7 @@
             <tr><td>Подтвердите пароль</td><td>
                 <input type="password" name="passwordConfirm" required></td></tr>
             <tr><td>Телефон</td><td>
-                <input type="tel" name="phone" class="masked" required
+                <input type="tel" name="phone" id="phone" class="masked" required
                        placeholder="(XX) XXX-XX-XX" pattern="[(][0-9]{2}[)]\s[0-9]{3}-[0-9]{2}-[0-9]{2}" ></tr>
             <tr><td>Почта</td><td>
                 <input type="email" name="mail" required placeholder="example@gmail.com" value="${mail}"></td></tr>

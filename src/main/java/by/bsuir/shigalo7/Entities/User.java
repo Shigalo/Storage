@@ -24,12 +24,13 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    public User(String name, String password, boolean active, String surname, String phone) {
+    public User(String name, String password, boolean active, String surname, String phone, String mail) {
         this.name = name;
         this.password = password;
         this.active = active;
         this.surname = surname;
         this.phone = phone;
+        this.mail = mail;
     }
 
     public User() {
