@@ -9,6 +9,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -39,6 +41,32 @@ public class HomeController {
         model.addAttribute("user", userService.getCurrentUser());
         model.addAttribute("subscribeList", subscribeList);
         return "accountWork/profile";
+    }
+
+    @GetMapping("/edit")
+    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('USER')")
+    public String edit(Model model,
+                       @RequestParam String name,
+                       @RequestParam String surname) {
+        model.addAttribute("isLogin", userService.isLogin());
+        model.addAttribute("isAdmin", userService.isAdmin());
+
+        userService.edit(name, surname);
+
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/edit")
+    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('USER')")
+    public String editPost(Model model,
+                       @RequestParam String name,
+                       @RequestParam String surname) {
+        model.addAttribute("isLogin", userService.isLogin());
+        model.addAttribute("isAdmin", userService.isAdmin());
+
+        userService.edit(name, surname);
+
+        return "redirect:/profile";
     }
 
     @GetMapping("/userRemove")

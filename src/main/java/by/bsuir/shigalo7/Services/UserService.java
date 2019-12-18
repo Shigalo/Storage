@@ -19,6 +19,10 @@ public class UserService {
         return userRepository.findByName(name);
     }
 
+    private User findByMail(String mail) {
+        return userRepository.findByMail(mail);
+    }
+
     public List<User> findAll() { return userRepository.findAll(); }
 
     public User getCurrentUser(){
@@ -27,7 +31,7 @@ public class UserService {
                     (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext()
                             .getAuthentication().getPrincipal();
 
-            return findByName(authUser.getUsername());
+            return findByMail(authUser.getUsername());
         }catch (Exception e){ return null; }
     }
 
@@ -43,5 +47,12 @@ public class UserService {
 
     public void userRemove() {
         userRepository.delete(getCurrentUser());
+    }
+
+    public void edit(String name, String surname) {
+        User user = getCurrentUser();
+        user.setName(name);
+        user.setSurname(surname);
+        userRepository.save(user);
     }
 }

@@ -35,4 +35,10 @@ public class WarehouseService {
         Warehouse warehouse = warehouseRepository.findById(id);
         warehouseRepository.delete(warehouse);
     }
+
+    public void edit(Integer id, String address) {
+        Warehouse warehouse = warehouseRepository.findById(id);
+        warehouse.setAddress(address);
+        warehouseRepository.save(warehouse);
+    }
 }

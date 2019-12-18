@@ -77,6 +77,18 @@ public class WarehouseController {
         return "warehouse/info";
     }
 
+    @PostMapping("/info/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('USER')")
+    public String setInfo(Model model, @PathVariable Integer id,
+                          @RequestParam String address) {
+        model.addAttribute("isLogin", userService.isLogin());
+        model.addAttribute("isAdmin", userService.isAdmin());
+
+        warehouseService.edit(id, address);
+
+        return "redirect:/warehouse/info/" + id;
+    }
+
     @PostMapping("/addProduct/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String addProduct(Model model,
