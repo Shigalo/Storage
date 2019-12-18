@@ -38,9 +38,9 @@ input:focus {
 }
 
 .mainHref {
-    background: #6DB3F2 url("/resources/images/main.png") no-repeat;
+    background: url("/resources/images/storages.png") no-repeat bottom;
     width: 500px;
-    height: 90px;
+    height: 130px;
     left: 32%;
     position: relative;
     background-size: auto 90px;
@@ -53,6 +53,8 @@ input:focus {
     padding-top: 30px;
 }
 .warehouse {
+    background-size: auto;
+    background: url("/resources/images/main.png");
     margin: 30px;
     border: 2px solid black;
     position: relative;
@@ -65,43 +67,11 @@ input:focus {
     line-height: 90px;
     color: black;
 }
-.warehouse p{
-
-}
 
 #addWarehouse {
     background: url("/resources/images/storage.png") repeat-x bottom;
     background-size: auto 100px;
 }
-
-/*#addWarehouse h3 {
-    position: relative;
-    font-size: 20px;
-    margin-top: 0;
-    font-family: 'Myriad Pro', 'Myriad', helvetica, arial, sans-serif;
-    text-shadow: 2px 3px 3px #292929;
-    letter-spacing: 7px;
-    -webkit-text-stroke: 1px white;
-}
-#addWarehouse h3 a {
-    text-decoration: none;
-    color: #ffffff;
-    position: absolute;
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(50%, rgba(0,0,0,0)), to(rgba(0,0,0,1)));
-    text-shadow: 0 2px 0 #e9e9e9;
-    -webkit-transition: all .3s;
-    -moz-transition: all .3s;
-    transition: all .3s;
-}
-#addWarehouse h3 a:hover {
-    color: #185a50;
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(50%, rgba(0,0,0,.3)), to(rgba(0,0,0,1)));
-
-}
-#addWarehouse h3:after {
-    color: #dbdbdb;
-    content : attr(data-title);
-}*/
 
 .log {
     position: absolute;
