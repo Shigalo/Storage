@@ -16,9 +16,6 @@ CREATE TABLE `storage`.`user` (
   mail varchar(45) NULL,
   PRIMARY KEY (`id`));
 
-INSERT INTO `storage`.`user` (`id`, `name`, `password`, `active`, `mail`) VALUES ('-1', 'admin', 'admin', '1', 'sashshig99@gmail.com');
-INSERT INTO `storage`.`user_role` (`user_id`, `roles`) VALUES ('-1', 'ADMIN');
-
 CREATE TABLE `storage`.`product`(
     id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
     name varchar(45) NOT NULL,

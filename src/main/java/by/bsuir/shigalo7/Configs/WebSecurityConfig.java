@@ -19,9 +19,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
-//    @Autowired
-//    MyLogoutSuccessHandler handler;
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -44,21 +41,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .passwordEncoder(NoOpPasswordEncoder.getInstance())
+                //Авторизация через почту, пароль и подтверждение аккаунта (подтверждать не нужно, просто спринг требует эту ячейку)
                 .usersByUsernameQuery("select mail, password, active from user where mail=?")
+                //Определяется роль пользователя
                 .authoritiesByUsernameQuery("select u.mail, ur.roles from user u inner join user_role ur on u.id = ur.user_id where u.mail = ?");
     }
-
-    /*@Component
-    public class MyLogoutSuccessHandler extends
-            SimpleUrlLogoutSuccessHandler implements LogoutSuccessHandler {
-
-        @Override
-        public void onLogoutSuccess(
-                HttpServletRequest request,
-                HttpServletResponse response,
-                Authentication authentication)
-                throws IOException, ServletException {
-            super.onLogoutSuccess(request, response, authentication);
-        }
-    }*/
 }

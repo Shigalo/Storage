@@ -13,9 +13,10 @@ public class HibernateConfig {
     public DataSource datasource() {
         return DataSourceBuilder.create()
                 .driverClassName("com.mysql.jdbc.Driver")
-                .url("jdbc:mysql://localhost:3306/storage?useSSL=false")
-                .username("root")
-                .password("root")
+                Эту строку убрать, написал чтоб ошибку показало, файл создания бд \Storage\generate.sql
+                .url("jdbc:mysql://localhost:3306/storage?useSSL=false")//Имя БД
+                .username("root")//Имя пользователя БД
+                .password("root")//Пароль пользователя БД
                 .build();
     }
 }
